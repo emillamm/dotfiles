@@ -1,7 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/elamm/dotfiles/vim'
-let g:netrw_dirhist_2='/Users/elamm/dotfiles/vim/ftplugin'
-let g:netrw_dirhist_3='/Users/elamm/dotfiles/vim'
-let g:netrw_dirhist_4='/Users/elamm/dotfiles'
-let g:netrw_dirhist_5='/Users/elamm'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users'
+let g:netrw_dirhist_2='/Users/enielsen/.vim'
+let g:netrw_dirhist_3='/Users/enielsen/.vim/colors'
+let g:netrw_dirhist_4='/Users/enielsen/.vim'
+let g:netrw_dirhist_5='/Users/enielsen/.vim/ftplugin'
+let g:netrw_dirhist_6='/Users/enielsen/.vim'
+let g:netrw_dirhist_7='/Users/enielsen/.vim/plugged'
+let g:netrw_dirhist_8='/Users/enielsen/.vim'
+let g:netrw_dirhist_9='/Users/enielsen'

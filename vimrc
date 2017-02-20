@@ -17,6 +17,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
 Plug 'vim-airline/vim-airline'
+" Plug 'scrooloose/nerdtree'
 call plug#end()
 
 
@@ -39,6 +40,14 @@ syntax on
 color dracula
 set cursorline
 
+" Enable delete in insert mode
+set backspace=indent,eol,start
+
+" No Backup
+set noswapfile
+
+" Status line
+set laststatus=2
 
 " Window command on fw
 call arpeggio#map('n', '', 0, 'fw', '<C-W>')
@@ -58,6 +67,15 @@ nnoremap <silent> ]B :blast <CR>
 " Search highlight
 nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nnoremap <CR> :nohlsearch<CR><CR>
+
+" Browsing files shortcuts
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>e :Ex<CR>
+
+" Syntax highlight
+nnoremap <F9> :SyntasticToggleMode<CR>
+
 
 " For auto setting paste/nopaste
 let &t_SI .= "\<Esc>[?2004h"
@@ -97,5 +115,12 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete shiftwidth=4 tabst
 
 " Scala
 "autocmd FileType scala setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
-autocmd BufWritePost *.scala silent :EnTypeCheck
+"autocmd BufWritePost *.scala silent :EnTypeCheck
 let g:syntastic_scala_checkers = ['ensime']
+nnoremap <silent> <Leader>t :EnType<CR>
+nnoremap <silent> <Leader>s :EnTypeCheck<CR>
+nnoremap <silent> <Leader>d :EnDeclaration<CR>
+
+
+" yaml
+autocmd FileType yaml setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent

@@ -1,2 +1,6 @@
 .DS_Store
 tags
+ENconfig.yml
+EmilsTestJob.scala
+.ensime
+.ensime_cache.d/
