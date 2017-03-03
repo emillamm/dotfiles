@@ -117,7 +117,8 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete shiftwidth=4 tabst
 "autocmd FileType scala setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
 "autocmd BufWritePost *.scala silent :EnTypeCheck
 let g:syntastic_scala_checkers = ['ensime']
-nnoremap <silent> <Leader>t :EnType<CR>
+nnoremap <localleader>t :EnType<CR>
+"nnoremap <silent> <Leader>t :EnType<CR>
 nnoremap <silent> <Leader>s :EnTypeCheck<CR>
 nnoremap <silent> <Leader>d :EnDeclaration<CR>
 
