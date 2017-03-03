@@ -1,5 +1,8 @@
-files="ctags gitignore profile vimrc vim"
+files="ctags gitignore profile vimrc vim/"
 dir=~/dotfiles
 for file in $files; do
-    ln -s $dir/$file ~/.$file
+    if [ ! -e ~/.$file ]
+        then
+        ln -s $dir/$file ~/.$file
+    fi
 done
