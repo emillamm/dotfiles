@@ -16,7 +16,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 " Plug 'scrooloose/nerdtree'
 call plug#end()
 
@@ -47,7 +47,7 @@ set backspace=indent,eol,start
 set noswapfile
 
 " Status line
-set laststatus=2
+"set laststatus=2
 
 " Window command on fw
 call arpeggio#map('n', '', 0, 'fw', '<C-W>')
@@ -66,7 +66,7 @@ nnoremap <silent> ]B :blast <CR>
 
 " Search highlight
 nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-nnoremap <CR> :nohlsearch<CR><CR>
+nnoremap <silent><CR> :nohlsearch<CR><CR>
 
 " Browsing files shortcuts
 nnoremap <silent> <Leader>b :Buffers<CR>
