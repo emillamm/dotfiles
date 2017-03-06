@@ -16,8 +16,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
-" Plug 'vim-airline/vim-airline'
-" Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-dispatch'
+Plug 'skywind3000/asyncrun.vim'
+"Plug 'vim-airline/vim-airline'
+"Plug 'scrooloose/nerdtree'
 call plug#end()
 
 
@@ -37,8 +39,10 @@ set mouse=a
 
 " Use Syntax
 syntax on
-color dracula
-set cursorline
+colo paramount
+set background=dark
+"colo dracula
+"set cursorline
 
 " Enable delete in insert mode
 set backspace=indent,eol,start
