@@ -18,6 +18,9 @@ Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
 Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 "Plug 'vim-airline/vim-airline'
 "Plug 'scrooloose/nerdtree'
 call plug#end()
@@ -37,12 +40,13 @@ set hlsearch
 "Allow mouse scrolling"
 set mouse=a
 
-" Use Syntax
+" Syntax and color
 syntax on
-colo paramount
-set background=dark
+"colo paramount
 "colo dracula
 "set cursorline
+colo seoul256
+set background=dark
 
 " Enable delete in insert mode
 set backspace=indent,eol,start
