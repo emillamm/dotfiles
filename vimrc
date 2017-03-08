@@ -39,9 +39,9 @@ set mouse=a
 
 " Use Syntax
 syntax on
-colo paramount
+"colo paramount
 set background=dark
-"colo dracula
+colo dracula
 "set cursorline
 
 " Enable delete in insert mode
@@ -76,6 +76,8 @@ nnoremap <silent><CR> :nohlsearch<CR><CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>e :Ex<CR>
+
+vnoremap <Leader>c "*y<CR>
 
 " Syntax highlight
 nnoremap <F9> :SyntasticToggleMode<CR>
