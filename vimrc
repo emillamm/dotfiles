@@ -25,6 +25,9 @@ Plug 'junegunn/limelight.vim'
 "Plug 'scrooloose/nerdtree'
 call plug#end()
 
+" YCM
+let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
+
 
 filetype plugin indent on
 
