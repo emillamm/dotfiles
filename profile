@@ -11,8 +11,8 @@ if [ "$PROFILE_ENV" == WORK ]; then
   export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/
   export im=$HOME/d/impressions
   export imp=$im/backend/src/main/python
-  export s3im="s3://bwaite/impression/"
-  export s3en=$s3im"output/EN/"
+  export s3im="s3://bwaite/impression"
+  export s3en=$s3im"/output/EN"
   function im() { cd $im; }
   function imp() { cd $imp; }
   alias s3='aws s3'

@@ -135,6 +135,9 @@ nnoremap <localleader>t :EnType<CR>
 nnoremap <silent> <Leader>s :EnTypeCheck<CR>
 nnoremap <silent> <Leader>d :EnDeclaration<CR>
 
+autocmd FileType scala setlocal makeprg=gradle\ build
+autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
+
 
 " yaml
 autocmd FileType yaml setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
