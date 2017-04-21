@@ -21,7 +21,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-"Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 "Plug 'scrooloose/nerdtree'
 call plug#end()
 
@@ -58,7 +58,7 @@ set backspace=indent,eol,start
 set noswapfile
 
 " Status line
-"set laststatus=2
+set laststatus=2
 
 " Window command on fw
 call arpeggio#map('n', '', 0, 'fw', '<C-W>')
@@ -126,17 +126,15 @@ autocmd FileType python setlocal textwidth=79 shiftwidth=4 tabstop=4 expandtab s
 " Java
 autocmd FileType java setlocal omnifunc=javacomplete#Complete shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
 
-" Scala
-"autocmd FileType scala setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
-"autocmd BufWritePost *.scala silent :EnTypeCheck
+"" Scala
 let g:syntastic_scala_checkers = ['ensime']
-nnoremap <localleader>t :EnType<CR>
-"nnoremap <silent> <Leader>t :EnType<CR>
+nnoremap <silent> <Leader>t :EnType<CR>
 nnoremap <silent> <Leader>s :EnTypeCheck<CR>
 nnoremap <silent> <Leader>d :EnDeclaration<CR>
-
 autocmd FileType scala setlocal makeprg=gradle\ build
 autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+autocmd BufWritePost * AsyncRun -program=make
 
 
 " yaml
