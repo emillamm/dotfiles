@@ -3,7 +3,7 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvie/vim-flake8'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -69,11 +69,20 @@ call arpeggio#map('i', '', 0, 'jk', '<Esc>')
 " Save on io
 call arpeggio#map('n', '', 0, 'io', ':w<CR>')
 
-" Navigate buffers
+" Save and compile on io
+call arpeggio#map('n', '', 0, 'ui', ':w<CR>:AsyncRun -program=make<CR>')
+
+" Buffers
 nnoremap <silent> [b :bprevious <CR>
 nnoremap <silent> ]b :bnext <CR>
 nnoremap <silent> [B :bfirst <CR>
 nnoremap <silent> ]B :blast <CR>
+
+" Quickfix
+nnoremap ]q :cnext<cr>
+nnoremap [q :cprev<cr>
+nnoremap ]l :lnext<cr>
+nnoremap [l :lprev<cr>
 
 " Search highlight
 nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
@@ -127,15 +136,13 @@ autocmd FileType python setlocal textwidth=79 shiftwidth=4 tabstop=4 expandtab s
 autocmd FileType java setlocal omnifunc=javacomplete#Complete shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
 
 "" Scala
-let g:syntastic_scala_checkers = ['ensime']
-nnoremap <silent> <Leader>t :EnType<CR>
-nnoremap <silent> <Leader>s :EnTypeCheck<CR>
-nnoremap <silent> <Leader>d :EnDeclaration<CR>
+"let g:syntastic_scala_checkers = ['ensime']
+"nnoremap <silent> <Leader>t :EnType<CR>
+"nnoremap <silent> <Leader>s :EnTypeCheck<CR>
+"nnoremap <silent> <Leader>d :EnDeclaration<CR>
 autocmd FileType scala setlocal makeprg=gradle\ build
 autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
-autocmd BufWritePost * AsyncRun -program=make
-
 
 " yaml
 autocmd FileType yaml setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
