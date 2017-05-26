@@ -98,6 +98,11 @@ vnoremap <Leader>c "*y<CR>
 " Syntax highlight
 nnoremap <F9> :SyntasticToggleMode<CR>
 
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
+
 
 " For auto setting paste/nopaste
 let &t_SI .= "\<Esc>[?2004h"
@@ -140,7 +145,7 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete shiftwidth=4 tabst
 "nnoremap <silent> <Leader>t :EnType<CR>
 "nnoremap <silent> <Leader>s :EnTypeCheck<CR>
 "nnoremap <silent> <Leader>d :EnDeclaration<CR>
-autocmd FileType scala setlocal makeprg=gradle\ build
+autocmd FileType scala setlocal makeprg=./.make
 autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
