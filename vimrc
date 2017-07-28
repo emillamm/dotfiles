@@ -25,11 +25,11 @@ Plug 'vim-airline/vim-airline'
 "Plug 'scrooloose/nerdtree'
 call plug#end()
 
+let vimdir = '$HOME/.vim'
+filetype plugin indent on
+
 " YCM
 let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
-
-
-filetype plugin indent on
 
 " Skeleton files
 au BufNewFile *.py 0r ~/vim_skeleton_files/py.skel | let IndentStyle = "py"
@@ -88,21 +88,31 @@ nnoremap [l :lprev<cr>
 nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 nnoremap <silent><CR> :nohlsearch<CR><CR>
 
-" Browsing files shortcuts
+" Misc leader shortcuts
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>e :Ex<CR>
+vnoremap <silent> <Leader>c "*y<CR>
 
-vnoremap <Leader>c "*y<CR>
+" Navigational leader shortcuts
+nnoremap <silent> <Space>f F
+nnoremap <silent> <Space>t T
+nnoremap <silent> <Space>d D
+nnoremap <silent> <Space>4 $
+nnoremap <silent> <Space>5 %
+nnoremap <silent> <Space>8 *
 
 " Syntax highlight
 nnoremap <F9> :SyntasticToggleMode<CR>
 
-set undofile
-set undodir=$HOME/.vim/undo
-set undolevels=1000
-set undoreload=10000
-
+if has('persistent_undo')
+  let undodirname = expand(vimdir . '/undo')
+  call system('mkdir ' . undodirname)
+  let &undodir = undodirname 
+  set undofile
+  set undolevels=1000
+  set undoreload=10000
+endif
 
 " For auto setting paste/nopaste
 let &t_SI .= "\<Esc>[?2004h"
@@ -114,8 +124,6 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
-
-"
 " FileTypes
 " textwidth=79   lines longer than 79 columns will be broken
 " shiftwidth=4   operation >> indents 4 columns; << unindents 4 columns
@@ -135,7 +143,7 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 sh
 autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
 
 " Python (from http://docs.python-guide.org/en/latest/dev/env/)
-autocmd FileType python setlocal textwidth=79 shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent   
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent   
 
 " Java
 autocmd FileType java setlocal omnifunc=javacomplete#Complete shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent

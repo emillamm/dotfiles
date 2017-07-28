@@ -2,5 +2,7 @@
 tags
 ENconfig.yml
 EmilsTestJob.scala
+emilsjobs/
 .ensime
 .ensime_cache.d/
+.make
