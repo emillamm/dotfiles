@@ -22,6 +22,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'milkypostman/vim-togglelist'
 "Plug 'scrooloose/nerdtree'
 call plug#end()
 
@@ -93,6 +94,8 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>e :Ex<CR>
 vnoremap <silent> <Leader>c "*y<CR>
+nnoremap <silent> <Leader>q :call ToggleQuickfixList()<CR>
+nnoremap <silent> <Leader>l :call ToggleLocationList()<CR>
 
 " Navigational leader shortcuts
 nnoremap <silent> <Space>f F
@@ -100,6 +103,7 @@ nnoremap <silent> <Space>t T
 nnoremap <silent> <Space>d D
 nnoremap <silent> <Space>4 $
 nnoremap <silent> <Space>5 %
+nnoremap <silent> <Space>6 ^
 nnoremap <silent> <Space>8 *
 
 " Syntax highlight
