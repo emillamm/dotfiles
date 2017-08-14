@@ -73,6 +73,8 @@ call arpeggio#map('n', '', 0, 'io', ':w<CR>')
 " Save and compile on io
 call arpeggio#map('n', '', 0, 'ui', ':w<CR>:AsyncRun -program=make<CR>')
 
+let g:netrw_banner=0
+
 " Buffers
 nnoremap <silent> [b :bprevious <CR>
 nnoremap <silent> ]b :bnext <CR>
