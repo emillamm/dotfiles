@@ -3,8 +3,7 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvie/vim-flake8'
-"Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
@@ -23,7 +22,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'milkypostman/vim-togglelist'
-"Plug 'scrooloose/nerdtree'
 call plug#end()
 
 let vimdir = '$HOME/.vim'
@@ -139,6 +137,9 @@ endfunction
 " shiftround     round indent to multiple of 'shiftwidth'
 " autoindent     align the new line indent with the previous line
  
+" HTML
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
+
 " JavaScript
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
 
@@ -152,13 +153,12 @@ autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2 expandtab softta
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent   
 
 " Java
-autocmd FileType java setlocal omnifunc=javacomplete#Complete shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
+autocmd FileType java setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
 
-"" Scala
-"let g:syntastic_scala_checkers = ['ensime']
-"nnoremap <silent> <Leader>t :EnType<CR>
-"nnoremap <silent> <Leader>s :EnTypeCheck<CR>
-"nnoremap <silent> <Leader>d :EnDeclaration<CR>
+" Groovy
+autocmd FileType groovy setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
+
+" Scala
 autocmd FileType scala setlocal makeprg=./.make
 autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
