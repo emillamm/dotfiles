@@ -11,7 +11,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'kana/vim-arpeggio'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'ensime/ensime-vim'
+"Plug 'ensime/ensime-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -153,6 +153,7 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 
 
 " Java
 autocmd FileType java setlocal omnifunc=javacomplete#Complete shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
+autocmd FileType groovy setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
 
 "" Scala
 "let g:syntastic_scala_checkers = ['ensime']
