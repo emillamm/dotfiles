@@ -1,8 +1,11 @@
-files="ctags gitignore profile vimrc vim/"
-dir=~/dotfiles
-for file in $files; do
+dir=$(dirname $0)
+for filename in $dir/dotfiles/*; do
+    file=$(basename $filename)
     if [ ! -e ~/.$file ]
         then
-        ln -s $dir/$file ~/.$file
+	echo "copying $file"
+        ln -s $dir/dotfiles/$file ~/.$file
+    else
+        echo "$file already copied"
     fi
 done
