@@ -3,7 +3,7 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvie/vim-flake8'
-Plug 'Valloric/YouCompleteMe', { 'dir': '.vim/plugged/YouCompleteMe', 'do': 'python install.py' }
+Plug 'Valloric/YouCompleteMe' " Must run python install.py afterwards
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
@@ -163,3 +163,4 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 
 " yaml
 autocmd FileType yaml setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
+
