@@ -151,6 +151,7 @@ autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2 expandtab softta
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent   
 
 " Java
+autocmd FileType java setlocal makeprg=./.make
 autocmd FileType java setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
 
 " Groovy
