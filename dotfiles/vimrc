@@ -20,10 +20,16 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'milkypostman/vim-togglelist'
+Plug 'keith/swift.vim'
+Plug 'udalov/kotlin-vim'
 call plug#end()
 
 let vimdir = '$HOME/.vim'
 filetype plugin indent on
+
+" makeprg (global)
+let g:netrw_sizestyle= "h"
+set makeprg=./.make
 
 " YCM
 let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
@@ -56,6 +62,7 @@ set noswapfile
 
 " Status line
 set laststatus=2
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
 " Window command on fw
 call arpeggio#map('n', '', 0, 'fw', '<C-W>')
@@ -69,6 +76,7 @@ call arpeggio#map('n', '', 0, 'io', ':w<CR>')
 " Save and compile on io
 call arpeggio#map('n', '', 0, 'ui', ':w<CR>:AsyncRun -program=make<CR>')
 
+" netrw
 let g:netrw_banner=0
 
 " Buffers
@@ -151,16 +159,17 @@ autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2 expandtab softta
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent   
 
 " Java
-autocmd FileType java setlocal makeprg=./.make
 autocmd FileType java setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
 
 " Groovy
 autocmd FileType groovy setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
 
+" Kotlin
+autocmd FileType kotlin setlocal efm=%*[^/]%f:\ (%l\\,\ %c):\ %m
+autocmd FileType kotlin setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
+
 " Scala
-autocmd FileType scala setlocal makeprg=./.make
 autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
-let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
 " yaml
 autocmd FileType yaml setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
