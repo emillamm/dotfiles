@@ -20,6 +20,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'milkypostman/vim-togglelist'
+Plug 'keith/swift.vim'
+Plug 'udalov/kotlin-vim'
 call plug#end()
 
 let vimdir = '$HOME/.vim'
@@ -39,6 +41,8 @@ set hlsearch
 
 "Allow mouse scrolling"
 set mouse=a
+"map <ScrollWheelUp> <C-Y>
+"map <ScrollWheelDown> <C-E>
 
 " Syntax and color
 syntax on
@@ -157,9 +161,18 @@ autocmd FileType java setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 sh
 " Groovy
 autocmd FileType groovy setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
 
+" Swift
+autocmd FileType swift setlocal makeprg=./.make
+
+" Kotlin
+autocmd FileType kotlin setlocal makeprg=./.make
+autocmd FileType kotlin setlocal efm=%*[^/]%f:\ (%l\\,\ %c):\ %m
+autocmd FileType kotlin setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
+
 " Scala
 autocmd FileType scala setlocal makeprg=./.make
 autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
+
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
 " yaml
