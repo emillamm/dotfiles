@@ -3,7 +3,7 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvie/vim-flake8'
-Plug 'Valloric/YouCompleteMe' " Must run python install.py afterwards
+Plug 'ycm-core/youcompleteme' " Must run python install.py afterwards
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
@@ -45,6 +45,9 @@ set hlsearch
 
 "Allow mouse scrolling"
 set mouse=a
+
+" Turn off fzf preview window
+let g:fzf_preview_window = ''
 
 " Syntax and color
 syntax on
