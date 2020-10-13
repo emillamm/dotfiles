@@ -31,8 +31,8 @@ filetype plugin indent on
 let g:netrw_sizestyle= "h"
 set makeprg=./.make
 
-" YCM
-let g:ycm_path_to_python_interpreter="/usr/local/bin/python"
+" YCM (Ensure $PYTHON_BIN enviromnent variable is configured)
+let g:ycm_path_to_python_interpreter=$PYTHON_BIN.'/python'
 
 " Skeleton files
 au BufNewFile *.py 0r ~/vim_skeleton_files/py.skel | let IndentStyle = "py"
