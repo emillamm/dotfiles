@@ -49,6 +49,12 @@ set mouse=a
 " Turn off fzf preview window
 let g:fzf_preview_window = []
 
+" Open fzf in bottom of window
+let g:fzf_layout = { 'down': '40%' }
+
+" Fix vim-autotag process issue on Mac: https://github.com/craigemery/vim-autotag/issues/34
+let g:autotagStartMethod='fork'
+
 " Syntax and color
 syntax on
 "colo paramount
