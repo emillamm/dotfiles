@@ -9,7 +9,7 @@ Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
 Plug 'kana/vim-arpeggio'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
@@ -47,7 +47,7 @@ set hlsearch
 set mouse=a
 
 " Turn off fzf preview window
-let g:fzf_preview_window = ''
+let g:fzf_preview_window = []
 
 " Syntax and color
 syntax on
