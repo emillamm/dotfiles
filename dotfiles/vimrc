@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'milkypostman/vim-togglelist'
 Plug 'keith/swift.vim'
 Plug 'udalov/kotlin-vim'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 let vimdir = '$HOME/.vim'
@@ -54,6 +55,9 @@ let g:fzf_layout = { 'down': '40%' }
 
 " Fix vim-autotag process issue on Mac: https://github.com/craigemery/vim-autotag/issues/34
 let g:autotagStartMethod='fork'
+
+let g:indentLine_enabled = 0
+let g:indentLine_color_term = 241
 
 " Syntax and color
 syntax on
@@ -160,6 +164,7 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab softtabsto
 
 " JSON
 autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
+autocmd FileType json let g:indentLine_enabled = 1
 
 " JSX (JavaScript)
 autocmd FileType javascript.jsx setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
@@ -182,5 +187,6 @@ autocmd FileType scala setlocal makeprg=./.make "override scala plugin
 autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
 
 " yaml
-autocmd FileType yaml setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 shiftround autoindent
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
+autocmd FileType yaml let g:indentLine_enabled = 1
 
