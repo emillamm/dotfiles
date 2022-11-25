@@ -23,6 +23,7 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'keith/swift.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'Yggdroot/indentLine'
+Plug 'google/vim-jsonnet'
 call plug#end()
 
 let vimdir = '$HOME/.vim'
