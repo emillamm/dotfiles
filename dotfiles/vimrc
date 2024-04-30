@@ -34,7 +34,7 @@ let g:netrw_sizestyle= "h"
 set makeprg=./.make
 
 " YCM (Ensure $STATIC_PYTHON_BIN enviromnent variable is configured)
-let g:ycm_path_to_python_interpreter=$PYTHON_3_10.'/python3.10'
+let g:ycm_path_to_python_interpreter=$PYTHON_3_9
 
 " Skeleton files
 au BufNewFile *.py 0r ~/vim_skeleton_files/py.skel | let IndentStyle = "py"
