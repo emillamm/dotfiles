@@ -24,6 +24,7 @@ Plug 'keith/swift.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'google/vim-jsonnet'
+Plug 'github/copilot.vim'
 call plug#end()
 
 let vimdir = '$HOME/.vim'
@@ -178,6 +179,9 @@ autocmd FileType java setlocal shiftwidth=4 tabstop=4 expandtab softtabstop=4 sh
 
 " Groovy
 autocmd FileType groovy setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
+
+" Protobuf
+autocmd FileType proto setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
 
 " Kotlin
 autocmd FileType kotlin setlocal efm=%*[^/]%f:\ (%l\\,\ %c):\ %m
