@@ -25,6 +25,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'google/vim-jsonnet'
 Plug 'github/copilot.vim'
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 let vimdir = '$HOME/.vim'
@@ -36,6 +37,9 @@ set makeprg=./.make
 
 " YCM (Ensure $STATIC_PYTHON_BIN enviromnent variable is configured)
 let g:ycm_path_to_python_interpreter=$PYTHON_3_9
+
+" TODO set to dynamic path using environment variable
+let g:copilot_node_command = "~/.nvm/versions/node/v22.8.0/bin/node"
 
 " Skeleton files
 au BufNewFile *.py 0r ~/vim_skeleton_files/py.skel | let IndentStyle = "py"
