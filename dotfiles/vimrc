@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vimtmp/plugged')
 Plug 'nvie/vim-flake8'
 Plug 'ycm-core/youcompleteme' " Must run `python install.py --all` afterwards
 Plug 'pangloss/vim-javascript'
@@ -145,9 +145,10 @@ nnoremap <silent> <Space>8 *
 nnoremap <F9> :SyntasticToggleMode<CR>
 
 if has('persistent_undo')
-  let undodirname = expand(vimdir . '/undo')
-  call system('mkdir ' . undodirname)
-  let &undodir = undodirname 
+  "let undodirname = expand(vimdir . '/undo')
+  "call system('mkdir ' . undodirname)
+  "let &undodir = undodirname 
+  set undodir=~/.vimundo/undo
   set undofile
   set undolevels=1000
   set undoreload=10000
