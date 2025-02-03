@@ -3,7 +3,7 @@ filetype off
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvie/vim-flake8'
-Plug 'ycm-core/youcompleteme' " Must run python install.py afterwards
+Plug 'ycm-core/youcompleteme' " Must run `python install.py --all` afterwards
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
@@ -24,8 +24,8 @@ Plug 'keith/swift.vim'
 Plug 'udalov/kotlin-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'google/vim-jsonnet'
-Plug 'github/copilot.vim'
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plug 'github/copilot.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 let vimdir = '$HOME/.vim'
@@ -35,6 +35,16 @@ filetype plugin indent on
 let g:netrw_sizestyle= "h"
 set makeprg=./.make
 
+"let g:ycm_filetype_specific_completion_to_disable = {'*': 1}
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_echo_current_diagnostic = 0
+let g:ycm_add_preview_to_completeopt="popup"
+"set completeopt-=preview
+
+"let g:ycm_max_num_candidates = 50
+"let g:ycm_auto_hover = 'CursorHold'
+nmap <leader>D <plug>(YCMHover)
 " YCM (Ensure $STATIC_PYTHON_BIN enviromnent variable is configured)
 let g:ycm_path_to_python_interpreter=$PYTHON_3_9
 
@@ -198,4 +208,9 @@ autocmd FileType scala setlocal efm=%*[^/]%f:%l:\ %m,%f:%l:\ %m
 " yaml
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 expandtab softtabstop=2 shiftround autoindent
 autocmd FileType yaml let g:indentLine_enabled = 1
+
+" Go
+autocmd FileType go nnoremap <silent> ]d :GoDef <CR>
+autocmd FileType go setlocal makeprg=./.make "override go plugin
+let g:go_list_type = "quickfix"
 
