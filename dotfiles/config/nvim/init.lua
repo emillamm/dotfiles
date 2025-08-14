@@ -132,21 +132,21 @@ vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 
 
--- Lspconfig
-local lspconfig = require('lspconfig')
-
-
 -- Lspconfig with gopls
-lspconfig.gopls.setup {
+vim.lsp.enable('gopls')
+vim.lsp.config('gopls', {
   settings = {
     gopls = {
       gofumpt = true,
       completeUnimported = true,
     },
   },
-}
+})
 
-lspconfig.lua_ls.setup {
+vim.lsp.enable('kotlin_lsp')
+
+vim.lsp.enable('lua_ls')
+vim.lsp.config('lua_ls', {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
@@ -170,7 +170,7 @@ lspconfig.lua_ls.setup {
   settings = {
     Lua = {}
   }
-}
+})
 
 require('mini.icons').setup()
 require('mini.statusline').setup()
