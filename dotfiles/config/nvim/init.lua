@@ -174,10 +174,12 @@ lspconfig.lua_ls.setup {
 
 require('mini.icons').setup()
 require('mini.statusline').setup()
-require('mini.completion').setup()
 require('mini.files').setup()
 require('mini.extra').setup()
 require('mini.visits').setup()
+require('mini.completion').setup({
+  --vim.opt.completeopt:append('fuzzy')
+})
 require('mini.animate').setup({
   scroll = {
     enable = false
@@ -200,14 +202,21 @@ vim.keymap.set('n', '<leader>f', function() MiniPick.builtin.files({ tool = "rg"
 -- Pick buffers
 vim.keymap.set('n', '<leader>b', function() MiniPick.registry.buffers({ tool = "rg" }) end)
 -- Pick "visits" and exclude current buffer
-vim.keymap.set('n', '<leader>v', function()
+function pick(recency)
   local current_path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':p')
   MiniExtra.pickers.visit_paths({
     filter = function(path_data)
-      print(current_path)
       return path_data.path ~= current_path
-    end
+    end,
+    sort = MiniVisits.gen_sort.default({ recency_weight = recency }),
   })
+end
+
+vim.keymap.set('n', '<leader>v', function()
+  return pick(0.5)
+end)
+vim.keymap.set('n', '<leader>g', function()
+  return pick(1.0)
 end)
 
 require('mini.statusline').setup({

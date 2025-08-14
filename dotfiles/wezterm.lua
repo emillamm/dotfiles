@@ -8,7 +8,9 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Nord (Gogh)'
 --config.default_cwd = "~"
 config.font_size = 16.0
-
+-- Prevent macOS from trying to do its own “composed characters” for Alt
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = false
 config.keys = {
   {
     key = 'f',
