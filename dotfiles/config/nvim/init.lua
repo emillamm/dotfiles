@@ -143,7 +143,9 @@ vim.lsp.config('gopls', {
   },
 })
 
-vim.lsp.enable('kotlin_lsp')
+-- TODO use official kotlin lsp when more mature (currently pre-alpha)
+--vim.lsp.enable('kotlin_lsp')
+vim.lsp.enable('kotlin_language_server')
 
 vim.lsp.enable('lua_ls')
 vim.lsp.config('lua_ls', {
