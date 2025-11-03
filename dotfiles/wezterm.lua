@@ -79,7 +79,20 @@ config.keys = {
     mods = 'SUPER',
     action = wezterm.action.ActivateTabRelative(-1),
   },
+  {
+    key = 's',
+    mods = 'SUPER',
+    action = wezterm.action.SendString('\x01s'), -- Ctrl-a s
+  },
 }
+
+for i = 1, 9 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = 'SUPER',
+    action = wezterm.action.SendString('\x01' .. i),
+  })
+end
 
 -- and finally, return the configuration to wezterm
 return config
