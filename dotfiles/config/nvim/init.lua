@@ -173,6 +173,7 @@ vim.lsp.config('lua_ls', {
     Lua = {}
   }
 })
+vim.lsp.enable('cue')
 
 require('mini.icons').setup()
 require('mini.statusline').setup()
@@ -273,7 +274,7 @@ vim.diagnostic.config({
 })
 
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { "go", "lua" },
+  ensure_installed = { "go", "lua", "cue" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = true,
