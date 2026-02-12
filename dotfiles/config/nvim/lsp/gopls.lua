@@ -1,3 +1,4 @@
+-- Go language server
 return {
   settings = {
     gopls = {

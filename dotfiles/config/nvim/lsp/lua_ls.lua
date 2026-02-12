@@ -1,3 +1,5 @@
+-- Lua language server
+-- Skips custom config if a project-local .luarc.json(c) exists
 return {
   on_init = function(client)
     if client.workspace_folders then

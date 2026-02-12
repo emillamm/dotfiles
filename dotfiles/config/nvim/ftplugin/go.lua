@@ -1,3 +1,4 @@
+-- Format on save and organize imports via LSP
 local group = vim.api.nvim_create_augroup("GoImports", { clear = true })
 
 local function apply_code_action_if_available(context)

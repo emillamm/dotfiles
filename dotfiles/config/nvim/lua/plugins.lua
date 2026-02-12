@@ -4,6 +4,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 add('skywind3000/asyncrun.vim')
 add('kana/vim-arpeggio')
 add('neovim/nvim-lspconfig')
+add('rachartier/tiny-inline-diagnostic.nvim')
 add('echasnovski/mini.icons')
 add('echasnovski/mini.pick')
 add('echasnovski/mini.statusline')
@@ -65,18 +66,34 @@ now(function()
   vim.lsp.enable('kotlin_language_server')
   vim.lsp.enable('lua_ls')
   vim.lsp.enable('cue')
+  vim.lsp.enable('jsonls')
 
-  -- Diagnostics
+  -- Diagnostics (virtual_text disabled, tiny-inline-diagnostic handles display)
   vim.diagnostic.config({
     signs = false,
     virtual_text = false,
     underline = true,
   })
 
-  -- Treesitter highlighting and indentation
+  -- Inline diagnostics with text wrapping (starts disabled, toggled by [d/]d)
+  require('tiny-inline-diagnostic').setup({
+    preset = "modern",
+    options = {
+      overflow = { mode = "wrap" },
+      enable_on_insert = false,
+    },
+  })
+  require('tiny-inline-diagnostic').disable()
+
+  -- Treesitter highlighting and indentation (auto-installs missing parsers)
   vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'go', 'lua' },
-    callback = function()
+    pattern = { 'go', 'lua', 'cue' },
+    callback = function(args)
+      local lang = vim.treesitter.language.get_lang(args.match) or args.match
+      if not pcall(vim.treesitter.language.add, lang) then
+        vim.cmd('TSInstall ' .. lang)
+        return
+      end
       vim.treesitter.start()
       vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end,

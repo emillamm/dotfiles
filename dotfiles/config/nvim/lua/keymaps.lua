@@ -105,34 +105,32 @@ end
 vim.keymap.set('n', '<leader>v', function() pick_visits(0.5) end)
 vim.keymap.set('n', '<leader>g', function() pick_visits(1.0) end)
 
--- Diagnostics navigation
+-- Diagnostics navigation (enable inline diagnostics temporarily, hide after cursor moves)
+local tid = require('tiny-inline-diagnostic')
+
 local function show_diagnostics_until_cursor_moves()
-  vim.diagnostic.config({ virtual_text = true })
+  tid.enable()
+  local moved = false
   local group = vim.api.nvim_create_augroup("TempDiagnostics", { clear = true })
   vim.api.nvim_create_autocmd("CursorMoved", {
     group = group,
-    once = true,
     callback = function()
-      vim.diagnostic.config({ virtual_text = false })
-      vim.api.nvim_del_augroup_by_id(group)
+      if moved then
+        tid.disable()
+        vim.api.nvim_del_augroup_by_id(group)
+      end
+      -- Skip first CursorMoved so the plugin has a chance to render
+      moved = true
     end,
   })
 end
 
 vim.keymap.set("n", "[d", function()
   vim.diagnostic.jump({ count = -1, float = false })
-  vim.schedule(function()
-    show_diagnostics_until_cursor_moves()
-  end)
-end, { desc = "Go to previous diagnostic & show inline temporarily" })
+  vim.schedule(show_diagnostics_until_cursor_moves)
+end, { desc = "Go to previous diagnostic" })
 
 vim.keymap.set("n", "]d", function()
   vim.diagnostic.jump({ count = 1, float = false })
-  vim.schedule(function()
-    show_diagnostics_until_cursor_moves()
-  end)
-end, { desc = "Go to next diagnostic & show inline temporarily" })
-
-vim.keymap.set("n", "<leader>d", function()
-  show_diagnostics_until_cursor_moves()
-end, { desc = "Show inline diagnostic temporarily" })
+  vim.schedule(show_diagnostics_until_cursor_moves)
+end, { desc = "Go to next diagnostic" })

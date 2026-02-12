@@ -1,1 +1,2 @@
+-- CUE language server
 return {}
