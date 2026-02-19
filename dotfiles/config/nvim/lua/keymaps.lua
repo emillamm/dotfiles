@@ -27,7 +27,9 @@ local function toggle_qf()
       return
     end
   end
+  local win = vim.api.nvim_get_current_win()
   vim.cmd('copen')
+  vim.api.nvim_set_current_win(win)
 end
 
 local function toggle_loc()
@@ -37,8 +39,11 @@ local function toggle_loc()
       return
     end
   end
+  local win = vim.api.nvim_get_current_win()
   local ok = pcall(vim.cmd, 'lopen')
-  if not ok then
+  if ok then
+    vim.api.nvim_set_current_win(win)
+  else
     vim.notify('No location list', vim.log.levels.WARN)
   end
 end
