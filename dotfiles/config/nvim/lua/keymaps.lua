@@ -21,8 +21,9 @@ vim.keymap.set('n', '[l', ':lprev<CR>')
 
 -- Quickfix/location list toggle (replaces vim-togglelist)
 local function toggle_qf()
+  local tab = vim.fn.tabpagenr()
   for _, win in pairs(vim.fn.getwininfo()) do
-    if win.quickfix == 1 and win.loclist == 0 then
+    if win.tabnr == tab and win.quickfix == 1 and win.loclist == 0 then
       vim.cmd('cclose')
       return
     end
@@ -33,8 +34,9 @@ local function toggle_qf()
 end
 
 local function toggle_loc()
+  local tab = vim.fn.tabpagenr()
   for _, win in pairs(vim.fn.getwininfo()) do
-    if win.quickfix == 1 and win.loclist == 1 then
+    if win.tabnr == tab and win.quickfix == 1 and win.loclist == 1 then
       vim.cmd('lclose')
       return
     end
