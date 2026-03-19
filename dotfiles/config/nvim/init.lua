@@ -6,7 +6,7 @@ vim.g.maplocalleader = "\\"
 vim.opt.makeprg = './.make'
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.hidden = false
+vim.opt.hidden = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
